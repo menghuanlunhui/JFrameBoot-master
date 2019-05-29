@@ -6,11 +6,19 @@
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <title>登录</title>
     <script type="text/javascript">if (window != top) {parent.location.reload();}</script>
+    <link rel="stylesheet" href="/static/library/plugins/camera/camera.css"/>
     <#include "include.ftl"/>
 </head>
 
-<body class="gray-bg" style="background-image: url('/static/theme/images/login/2.jpg'); background-size: cover;">
-
+<body class="gray-bg">
+<div id="templatemo_banner_slide" class="container_wapper">
+    <div class="camera_wrap camera_emboss" id="camera_slide">
+        <div data-src="/static/theme/images/login/3.jpg"></div>
+        <div data-src="/static/theme/images/login/2.jpg"></div>
+        <div data-src="/static/theme/images/login/4.jpg"></div>
+        <div data-src="/static/theme/images/login/5.jpg"></div>
+    </div>
+</div>
 <div class="middle-box text-center">
     <div>
         <h1 class="logo-name"> 平台管理中心 </h1>
@@ -20,13 +28,13 @@
             <div class="form-group">
                 <div class="input-group">
                     <span class="input-group-addon"><i class="fa fa-user"></i></span>
-                    <input type="text" class="form-control" placeholder="用户名" name="username" value="admin">
+                    <input type="text" class="form-control" placeholder="用户名" name="username" value="">
                 </div>
             </div>
             <div class="form-group">
                 <div class="input-group">
                     <span class="input-group-addon"><i class="fa fa-key"></i></span>
-                    <input type="password" class="form-control" placeholder="密码" name="password" value="123456">
+                    <input type="password" class="form-control" placeholder="密码" name="password" value="">
                 </div>
             </div>
             <div class="form-group">
@@ -34,7 +42,7 @@
                     <div class="col-md-7 col-sm-7 col-xs-7">
                         <div class="input-group">
                             <span class="input-group-addon"><i class="fa fa-bars"></i></span>
-                            <input type="text" class="form-control" id="validNum" name="validNum" placeholder="验证码" value="1111">
+                            <input type="text" class="form-control" id="validNum" name="validNum" placeholder="验证码" value="">
                         </div>
                     </div>
                     <div class="col-md-5 col-sm-5 col-xs-5">
@@ -43,11 +51,14 @@
                 </div>
             </div>
             <button type="submit" class="btn btn-danger block full-width">登 录</button>
-            <h5><a href="/">网站首页</a></h5>
+            <#--<h5><a href="/">网站首页</a></h5>-->
         </form>
     </div>
 </div>
-
+<script src="/static/library/jquery/jquery.easing.min.js"></script>
+<script src="/static/library/plugins/camera/camera.min.js"></script>
+<script src="/static/library/plugins/camera/templatemo_script.js"></script>
+<script src="/static/common/js/gt.js"></script>
 <script>
     $(function () {
         $('#loginForm').bootstrapValidator({
