@@ -138,7 +138,7 @@ var CONSTANT = {
         // orders为数组，格式[[index,name],...]
         var sort = CONSTANT.GETCOLUMN(data.order[0], orders);
         var param = {
-            pageNo: data.start / data.length + 1,//data.length每页显示的条数，初始值20，不能写死，不然每页切换显示的条数，就会报错
+            pageNo: data.start / data.length + 1,//data.length每页显示的条数，初始值是DataTables设置的pageLength，不能写死，不然每页切换显示的条数，如20换成50，ajax请求的每页条数还是之前的，翻页就会请求异常
             pageSort: sort,
             pageSize: data.length
         };
