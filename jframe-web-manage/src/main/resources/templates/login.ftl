@@ -28,13 +28,13 @@
             <div class="form-group">
                 <div class="input-group">
                     <span class="input-group-addon"><i class="fa fa-user"></i></span>
-                    <input type="text" class="form-control" placeholder="用户名" name="username" value="">
+                    <input type="text" class="form-control" placeholder="用户名" name="username" id="username" value="">
                 </div>
             </div>
             <div class="form-group">
                 <div class="input-group">
                     <span class="input-group-addon"><i class="fa fa-key"></i></span>
-                    <input type="password" class="form-control" placeholder="密码" name="password" value="">
+                    <input type="password" class="form-control" placeholder="密码" name="password" id="password" value="">
                 </div>
             </div>
             <div class="form-group">
@@ -50,6 +50,9 @@
                     </div>
                 </div>
             </div>
+            <div style="margin-top:-5px;">
+                　　<label><input id="remember" style="float: left;" type="checkbox"><span style="color:#ffffff">记住用户名和密码</span></label>
+            </div>
             <button type="submit" class="btn btn-danger block full-width">登 录</button>
             <#--<h5><a href="/">网站首页</a></h5>-->
         </form>
@@ -60,6 +63,16 @@
 <script src="/static/library/plugins/camera/templatemo_script.js"></script>
 <script src="/static/common/js/gt.js"></script>
 <script>
+    window.onload = function(){
+        //分析cookie值，显示上次的登陆信息
+        var oRemember = document.getElementById("remember");
+        if(getCookie("cyusername") && getCookie("cypassword")){
+            $("#username").val(getCookie("cyusername"));
+            $("#password").val(getCookie("cypassword"));
+            oRemember.checked = true;
+        }
+    };
+
     $(function () {
         $('#loginForm').bootstrapValidator({
             fields: {
@@ -92,7 +105,15 @@
                 url: '/admin/dologin',
                 params: $form.serialize(),
                 success: function (data) {
-                    if (data.code == 0) {
+                    if (data.code == 0) {//code为0时表示登陆成功
+                        //账号和密码都有时根据后台返回的登录状态success或者failure做判断，当是success时添加以下代码
+                        if(remember.checked){//记住密码
+                            setCookie('cyusername',$("#username").val(),7); //保存帐号到cookie，有效期7天
+                            setCookie('cypassword',$("#password").val(),7); //保存密码到cookie，有效期7天
+                        }else{//取消记住密码
+                            delCookie('cyusername');
+                            delCookie('cypassword');
+                        }
                         layer.msg(data.msg, {time: 1000, icon: 1, offset: 0}, function () {
                             jumpUrl("/admin/index");
                         });
@@ -104,6 +125,27 @@
             });
         });
     });
+    //设置cookie
+    function setCookie(name,value,day){
+        var date = new Date();
+        date.setDate(date.getDate() + day);
+        document.cookie = name + '=' + value + ';expires='+ date;
+    };
+    //获取cookie
+    function getCookie(name){
+        var reg = RegExp(name+'=([^;]+)');
+        var arr = document.cookie.match(reg);
+        if(arr){
+            return arr[1];
+        }else{
+            return '';
+        }
+    };
+
+    //删除cookie
+    function delCookie(name){
+        setCookie(name,null,-1);
+    };
 </script>
 </body>
 </html>
