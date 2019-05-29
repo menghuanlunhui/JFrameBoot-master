@@ -1,0 +1,9 @@
+# spring cloud config support
+spring:
+  cloud:
+    config:
+      enabled: false # 关闭/启用
+      uri: http://eureka:eureka1234@127.0.0.1:10000/cfg # native
+      name: sys # 获取config server[jframe-cloud]的configs/sys-dev.properties
+      profile: dev
+      #label: master # git分支

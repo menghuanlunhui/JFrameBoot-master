@@ -1,0 +1,15 @@
+server:
+  port: 9091
+spring:
+  application:
+    name: nc-gateway
+  cloud:
+    nacos:
+      config:
+        server-addr: dev:8848
+logging:
+  path: /Users/admin/Downloads/logs/nacos/
+  file: nacos.log
+gw:
+  data-id: gw01
+  group: gw
