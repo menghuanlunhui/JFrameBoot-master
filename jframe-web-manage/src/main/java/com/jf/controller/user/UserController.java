@@ -6,6 +6,7 @@ import com.jf.controller.view.ViewPDF;
 import com.jf.controller.view.ViewExcel;
 import com.jf.database.model.User;
 import com.jf.database.model.excel.UserModel;
+import com.jf.encrypt.PasswordUtil;
 import com.jf.entity.ResMsg;
 import com.jf.entity.enums.ResCode;
 import com.jf.service.system.SystemService;
@@ -96,7 +97,7 @@ public class UserController extends BaseController {
     }
 
     /**
-     * 会员编辑
+     * 会员新增/编辑
      *
      * @param user model
      * @return
@@ -112,6 +113,10 @@ public class UserController extends BaseController {
         String phone = user.getPhone();
         String email = user.getEmail();
         Long userId = user.getId();
+        String password = user.getPassword();
+        if(!"".equals(password) && password!=null){
+            user.setPassword(PasswordUtil.MD5Encode(password));
+        }
         if (userId != null) {
             User t = userService.findUserById(userId);
             if (!phone.equals(t.getPhone())) {
@@ -130,8 +135,18 @@ public class UserController extends BaseController {
                 return new ResMsg(ResCode.UPDATE_SUCCESS.code(), ResCode.UPDATE_SUCCESS.msg());
             }
             return new ResMsg(ResCode.UPDATE_FAIL.code(), ResCode.UPDATE_FAIL.msg());
+        }else{//新增
+            User userInfo = userService.findUserByPhone(phone);
+            if (userInfo!=null) {
+                return new ResMsg(3, "手机号已存在");
+            }else{
+               int i = userService.insertUser(user);
+               if(i>0){
+                   return new ResMsg(ResCode.INSERT_SUCCESS.code(), ResCode.INSERT_SUCCESS.msg());
+               }
+            }
         }
-        return new ResMsg(ResCode.CODE_22.code(), ResCode.CODE_22.msg());
+        return new ResMsg(ResCode.OPERATE_FAIL.code(), ResCode.OPERATE_FAIL.msg());
     }
 
     /**

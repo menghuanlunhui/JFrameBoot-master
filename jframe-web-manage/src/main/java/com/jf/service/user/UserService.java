@@ -103,13 +103,8 @@ public class UserService {
      * @return
      */
     public User findUserByPhone(String phone) {
-        User condition = new User();
-        condition.setPhone(phone);
-        List<User> list = userMapper.findByCondition(condition);
-        if (!list.isEmpty()) {
-            return list.get(0);
-        }
-        return null;
+        User user = userMapper.findByPhone(phone);
+        return user;
     }
 
     /**
@@ -157,19 +152,10 @@ public class UserService {
     /**
      * 新增用户
      *
-     * @param nickname
-     * @param email
-     * @param password
-     * @param phone
+     * @param user
      * @return
      */
-    public int insertUser(String nickname, String email, String password, String phone) {
-        User user = new User(IdGen.get().nextId());
-        user.setEmail(email);
-        user.setPassword(password);
-        user.setPhone(phone);
-        user.setNickname(nickname);
-        // 新增用户
+    public int insertUser(User user) {
         return userMapper.insert(user);
     }
 

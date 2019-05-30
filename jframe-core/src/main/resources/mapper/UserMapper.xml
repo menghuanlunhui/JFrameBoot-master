@@ -128,24 +128,93 @@
         <include refid="COMMON.ORDER"/>
     </select>
 
-    <insert id="insert" parameterType="user">
-        INSERT INTO t_user (
-            id,
-            nickname,
-            phone,
-            email,
-            password,
-            avatar
-        )
-		VALUE (
-            #{id},
-            #{nickname},
-            #{phone},
-            #{email},
-            #{password},
-            #{avatar}
-		)
+
+    <insert id="insert" parameterType="com.jf.database.model.User" keyProperty="id" useGeneratedKeys="true">
+        insert into t_user
+        <trim prefix="(" suffix=")" suffixOverrides=",">
+            <if test="id != null and id!=''">
+                id,
+            </if>
+            <if test="nickname != null  and nickname!=''">
+                nickname,
+            </if>
+            <if test="phone != null  and phone!=''">
+                phone,
+            </if>
+            <if test="email != null  and email!=''">
+                email,
+            </if>
+            <if test="password != null  and password!=''">
+                password,
+            </if>
+            <if test="avatar != null  and avatar!=''">
+                avatar,
+            </if>
+            <if test="realname != null  and realname!=''">
+                realname,
+            </if>
+            <if test="idcard != null  and idcard!=''">
+                idcard,
+            </if>
+            <if test="gender != null  and gender!=''">
+                gender,
+            </if>
+            <if test="address != null  and address!=''">
+                address,
+            </if>
+            <if test="birthday != null  and birthday!=''">
+                birthday,
+            </if>
+            <if test="locked != null  and locked!=''">
+                locked,
+            </if>
+            <if test="forbided != null  and forbided!=''">
+                forbided,
+            </if>
+        </trim>
+        <trim prefix="values (" suffix=")" suffixOverrides=",">
+            <if test="id != null  and id!=''">
+                #{id},
+            </if>
+            <if test="nickname != null  and nickname!=''">
+                #{nickname},
+            </if>
+            <if test="phone != null  and phone!=''">
+                #{phone},
+            </if>
+            <if test="email != null  and email!=''">
+                #{email},
+            </if>
+            <if test="password != null  and password!=''">
+                #{password},
+            </if>
+            <if test="avatar != null  and avatar!=''">
+                #{avatar},
+            </if>
+            <if test="realname != null  and realname!=''">
+                #{realname},
+            </if>
+            <if test="idcard != null  and idcard!=''">
+                #{idcard},
+            </if>
+            <if test="gender != null and gender!=''">
+                #{gender},
+            </if>
+            <if test="address != null  and address!=''">
+                #{address},
+            </if>
+            <if test="birthday != null  and birthday!=''">
+                #{birthday},
+            </if>
+            <if test="locked != null  and locked!=''">
+                #{locked},
+            </if>
+            <if test="forbided != null  and forbided!=''">
+                #{forbided},
+            </if>
+        </trim>
     </insert>
+
 
     <update id="update" parameterType="user">
         UPDATE t_user
