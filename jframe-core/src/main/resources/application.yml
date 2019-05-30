@@ -227,7 +227,7 @@ fdfs: # fastDFS配置
   so-timeout: 3000
   connect_timeout: 3000
   tracker-list: # 可设置多个
-    - 192.168.31.205:22122
+    - 218.23.36.100:22122
 system: # 系统自定义配置
   version: 'v5.2.3'
   dev: true # 是否开发环境
@@ -236,7 +236,7 @@ system: # 系统自定义配置
   static_path: /Users/admin/Downloads/static/ # 静态文件目录
   log_path: /Users/admin/Downloads/logs/ # 日志存放目录
   server_id: ${spring.application.name} # 服务ID，用于日志标记
-  fdfs_nginx: http://192.168.1.168/ # DFS Nginx代理服务器地址
+  fdfs_nginx: http://218.23.36.100/ # DFS Nginx代理服务器地址
   aliyun: # 支付宝
     partner: 2088
     seller: nf@sandbox.com
