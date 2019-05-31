@@ -70,7 +70,15 @@
             {title: "真实姓名", data: "realname", defaultContent: "--", orderable: false},
             {title: "头像", data: "avatar", orderable: false, render: CONSTANT.RENDER.AVATAR},
             {title: "注册时间", data: "createTime", defaultContent: "--"},
-            {title: "是否冻结", data: "deleted", render: CONSTANT.RENDER.BOOLEAN},
+            {title: "是否冻结", data: "locked",
+                render: function (data, type, full, callback) {
+                    if (full.locked=='1') {
+                        return "是";
+                    } else {
+                        return "否";
+                    }
+                }
+            },
             {
                 title: "操作", data: null, orderable: false,
                 render: function (data, type, full, callback) {
@@ -94,7 +102,7 @@
           // dom: '<"top"fli>rt<"bottom"p><"clear">',
             columns: columns,
             ajax: function (data, callback, settings) {
-                CONSTANT.AJAX("/admin/user/userListData", [[1, "u.id"], [2, "u.nickname"], [3, "u.phone"], [8, "u.id"], [9, "u.is_delete"]], data, callback, settings);
+                CONSTANT.AJAX("/admin/user/userListData", [[2, "u.id"], [3, "u.nickname"], [4, "u.phone"], [8, "u.create_time"], [9, "u.locked"]], data, callback, settings);
             },
             columnDefs: [
                 CONSTANT.BUTTON.CHECKBOXS,
