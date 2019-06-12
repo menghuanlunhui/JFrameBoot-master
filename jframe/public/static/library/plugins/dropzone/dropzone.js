@@ -1746,7 +1746,7 @@
 
         if (type == 1) {
             accept = ".jpg,.jpeg,.png";
-            size = 2;
+            size = 5;
         } else if (type == 2) {
             accept = ".rar,.zip,.txt";
             size = 10;
