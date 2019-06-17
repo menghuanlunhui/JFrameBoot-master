@@ -38,6 +38,7 @@
                         <button type="button" class="btn btn-primary btn-sm" data-open="modal" data-width="800px" data-height="500px" href="/admin/user/userDetail" id="btn-add"><i class="fa fa-plus"></i> 添加</button>
                         <button type="button" id="search" class="btn btn-sm btn-info"><i class="fa fa-search"></i>查询</button>
                         <button type="button" id="clear" class="btn btn-sm btn-info"><i class="fa fa-remove"></i>清空</button>
+                        <button type="button" id="import" class="btn btn-sm btn-info"><i class="fa fa-share"></i>导入Excel</button>
                         <button type="button" id="export" class="btn btn-sm btn-info"><i class="fa fa-share"></i>导出Excel</button>
                         <button type="button" id="export2" class="btn btn-sm btn-info"><i class="fa fa-share"></i>导出Pdf</button>
                         <button type="button" class="btn btn-danger btn-sm" id="btn-del"><i class="fa fa-remove"></i> 批量删除</button>
@@ -68,6 +69,7 @@
             {title: "手机号", data: "phone", defaultContent: "--"},
             {title: "邮箱", data: "email", defaultContent: "--", orderable: false},
             {title: "真实姓名", data: "realname", defaultContent: "--", orderable: false},
+            {title: "地址", data: "addressName", defaultContent: "--", orderable: false},
             {title: "头像", data: "avatar", orderable: false, render: CONSTANT.RENDER.AVATAR},
             {title: "注册时间", data: "createTime", defaultContent: "--"},
             {title: "是否冻结", data: "locked",
@@ -129,7 +131,10 @@
             tables.destroy();
             $('#table').html('');
         });
-
+        $("#import").click(function () {// 导入excel
+            //var formData = $("#queryForm").serialize();
+            location.href = '/admin/user/userImport';
+        });
         $("#export").click(function () {// 导出到Excel
             var formData = $("#queryForm").serialize();
             location.href = '/admin/user/exportUserExcel?' + formData;

@@ -11,7 +11,7 @@ public class StateRender extends AbstractCellRender<String> {
 
     @Override
     public String render(String s) {
-        if ("0".equals(s)) {
+        if ("1".equals(s)) {
             return "冻结";
         }
         return "正常";

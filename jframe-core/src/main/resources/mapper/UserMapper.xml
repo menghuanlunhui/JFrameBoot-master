@@ -34,7 +34,8 @@
 		u.realname,
 		u.idcard,
 		u.gender,
-		u.address,
+		u.address_code,
+		u.address_name,
 		u.birthday,
 		u.deleted,
 		u.locked,
@@ -55,7 +56,8 @@
         <result property="realname" column="realname" />
         <result property="idcard" column="idcard" />
         <result property="gender" column="gender" />
-        <result property="address" column="address" />
+        <result property="addressCode" column="address_code" />
+        <result property="addressName" column="address_name" />
         <result property="birthday" column="birthday" />
         <result property="deleted" column="deleted" />
         <result property="locked" column="locked" />
@@ -159,8 +161,11 @@
             <if test="gender != null  and gender!=''">
                 gender,
             </if>
-            <if test="address != null  and address!=''">
-                address,
+            <if test="addressCode != null  and addressCode!=''">
+                address_code,
+            </if>
+            <if test="addressName != null  and addressName!=''">
+                address_name,
             </if>
             <if test="birthday != null  and birthday!=''">
                 birthday,
@@ -200,8 +205,11 @@
             <if test="gender != null and gender!=''">
                 #{gender},
             </if>
-            <if test="address != null  and address!=''">
-                #{address},
+            <if test="addressCode != null  and addressCode!=''">
+                #{addressCode},
+            </if>
+            <if test="addressName != null  and addressName!=''">
+                #{addressName},
             </if>
             <if test="birthday != null  and birthday!=''">
                 #{birthday},
@@ -229,7 +237,8 @@
             <if test="realname != null and realname != ''">realname = #{realname},</if>
             <if test="idcard != null and idcard != ''">idcard = #{idcard},</if>
             <if test="gender != null">gender = #{gender},</if>
-            <if test="address != null and address != ''">address = #{address},</if>
+            <if test="addressCode != null and addressCode != ''">address_code = #{addressCode},</if>
+            <if test="addressName != null and addressName != ''">address_name = #{addressName},</if>
             <if test="birthday != null and birthday != ''">birthday = #{birthday},</if>
             <if test="locked != null">locked = #{locked},</if>
             <if test="wrongPwd != null">wrong_pwd = #{wrongPwd},</if>

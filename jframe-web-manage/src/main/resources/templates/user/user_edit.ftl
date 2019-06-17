@@ -83,7 +83,8 @@
         <div class="form-group">
             <label class="col-sm-2 control-label">住址：</label>
             <div class="col-sm-9">
-                <input type="text" id="city-picker" name="address" value="${user.address }" class="form-control" placeholder="住址">
+                <input type="text" id="city-picker" name="addressCode" value="${user.addressCode }" class="form-control" placeholder="住址">
+                <input type="hidden" id="addressName" name="addressName" value="${user.addressName }"  class="form-control">
             </div>
         </div>
         <div class="form-group">
@@ -115,8 +116,27 @@
             $('#userEditForm').bootstrapValidator('revalidateField', 'birthday');
         });
         cityPicker("#city-picker", "district", "code", function () {
-            $('#userEditForm').bootstrapValidator('revalidateField', 'address');
+           /* //以下方法用于单个取值（code）
+            var province=$("#city-picker").val().split("/")[0];
+            var city=$("#city-picker").val().split("/")[1];
+            var district=$("#city-picker").val().split("/")[2];*/
+            var a = document.getElementsByClassName("select-item");
+            var addressName="";
+            for(var i=0;i<a.length;i++){
+                if(addressName==""){
+                    addressName=a[i].innerHTML;
+                }else{
+                    addressName=addressName+"-"+a[i].innerHTML;
+                }
+
+            }
+            $("#addressName").val(addressName);
+
+            $('#userEditForm').bootstrapValidator('revalidateField', 'addressCode');
+
         });
+
+
 
         $("#avatar").Uploader({
             limit: 1,
@@ -193,7 +213,7 @@
                         }
                     }
                 },
-                address: {
+                addressCode: {
                     validators: {
                         notEmpty: {
                             message: '地址不能为空'

@@ -42,8 +42,8 @@ public class UserModel {
     private String address;
     @Fields(value = "生日")
     private String birthday;
-    @Fields(value = "状态", type = FieldType.ENUM, render = StateRender.class)
-    private String deleted;
+    @Fields(value = "是否冻结", type = FieldType.ENUM, render = StateRender.class)
+    private String locked;
 
     public String getNickname() {
         return nickname;
@@ -133,11 +133,11 @@ public class UserModel {
         this.birthday = birthday;
     }
 
-    public String getDeleted() {
-        return deleted;
+    public String getLocked() {
+        return locked;
     }
 
-    public void setDeleted(String deleted) {
-        this.deleted = deleted;
+    public void setLocked(String locked) {
+        this.locked = locked;
     }
 }

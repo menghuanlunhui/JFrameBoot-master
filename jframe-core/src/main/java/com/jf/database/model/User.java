@@ -68,8 +68,11 @@ public class User extends BaseVo implements Serializable {
     /** 性别 1-男 0-女 */
     private String gender;
 
-    /** 住址 */
-    private String address;
+    /** 住址编码 */
+    private String addressCode;
+
+    /** 住址名称 --city-picker 对应的编码在js中，存储名字方面地址在前台显示（列表或导出等）*/
+    private String addressName;
 
     /** 出生日期 */
     //@DateTimeFormat(pattern = "yyyy-MM-dd")
@@ -200,12 +203,20 @@ public class User extends BaseVo implements Serializable {
         this.gender = gender;
     }
 
-    public String getAddress() {
-        return address;
+    public String getAddressCode() {
+        return addressCode;
     }
 
-    public void setAddress(String address) {
-        this.address = address;
+    public void setAddressCode(String addressCode) {
+        this.addressCode = addressCode;
+    }
+
+    public String getAddressName() {
+        return addressName;
+    }
+
+    public void setAddressName(String addressName) {
+        this.addressName = addressName;
     }
 
     public String getBirthday() {
@@ -287,7 +298,8 @@ public class User extends BaseVo implements Serializable {
                 ", realname='" + realname + '\'' +
                 ", idcard='" + idcard + '\'' +
                 ", gender=" + gender +
-                ", address='" + address + '\'' +
+                ", addressCode='" + addressCode + '\'' +
+                ", addressName='" + addressName + '\'' +
                 ", birthday='" + birthday + '\'' +
                 ", deleted=" + deleted +
                 ", locked=" + locked +
@@ -371,8 +383,13 @@ public class User extends BaseVo implements Serializable {
             return this;
         }
 
-        public Builder address(String address) {
-            user.setAddress(address);
+        public Builder addressCode(String addressCode) {
+            user.setAddressCode(addressCode);
+            return this;
+        }
+
+        public Builder addressName(String addressName) {
+            user.setAddressName(addressName);
             return this;
         }
 
