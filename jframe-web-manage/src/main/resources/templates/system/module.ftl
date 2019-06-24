@@ -49,9 +49,10 @@
                                 </div>
                                 <div class="form-group">
                                     <label class="col-sm-3 control-label">图标名：</label>
-                                    <div class="col-sm-9">
+                                    <div class="col-sm-7">
                                         <input type="text" id="icon" name="icon" class="form-control" placeholder="图标名">
                                     </div>
+                                    <input id="ico-btn" class="btn btn-warning" type="button" value="选择图标">
                                 </div>
                                 <div class="form-group">
                                     <label class="col-sm-3 control-label">排序：</label>
@@ -221,6 +222,19 @@
                     }
                 }
             });
+        });
+    });
+
+    $("#ico-btn").click(function(){
+        layer.open({
+            type: 2,
+            title:"图标列表",
+            content: "/admin/system/fontIcoList",
+            area: ['480px', '90%'],
+            success: function(layero, index){
+                //var body = layer.getChildFrame('.ico-list', index);
+                //console.log(layero, index);
+            }
         });
     });
 </script>

@@ -234,6 +234,16 @@ public class SystemBackController extends BaseController {
     }
 
     /**
+     * 选择图标
+     * @return
+     */
+    @RequestMapping("fontIcoList")
+    @AuthPassport(right = false)
+    public String fontIcoList() {
+        return "system/FontIcoList";
+    }
+
+    /**
      * @return
      */
     @RequestMapping("/getAllModule")
