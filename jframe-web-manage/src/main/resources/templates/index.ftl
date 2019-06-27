@@ -34,7 +34,8 @@
                 <#list modules as module>
                     <#if module.modFlag == 1>
                         <li>
-                            <a> <i class="${module.modIcon } f14"></i> <span class="nav-label">${module.modName }</span></a>
+                            <a> <i class="${module.modIcon } f14"></i> <span class="nav-label">${module.modName }</span><span
+                                        class="fa arrow"></span></a>
                             <ul class="nav nav-second-level">
                                 <#assign parent = module.id />
                                 <#list modules as module2>
