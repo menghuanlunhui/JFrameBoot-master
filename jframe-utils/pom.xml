@@ -42,7 +42,7 @@
         <itextasian.version>5.2.0</itextasian.version>
         <jdom.version>1.1</jdom.version>
         <dom4j.version>1.6.1</dom4j.version>
-        <xstream.version>1.4.8</xstream.version>
+        <xstream.version>1.4.10-java7</xstream.version>
         <mail.version>1.4.7</mail.version>
         <qrcode.version>3.3.1</qrcode.version>
         <aliyunecs.version>4.0.2</aliyunecs.version>
