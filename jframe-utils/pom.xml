@@ -29,7 +29,7 @@
     </build>
 
     <properties>
-        <spring.core.version>5.1.2.RELEASE</spring.core.version>
+        <spring.core.version>5.2.22.RELEASE</spring.core.version>
         <mysql.version>5.1.45</mysql.version>
         <postgresql.version>42.2.2</postgresql.version>
         <servlet.version>3.1.0</servlet.version>
