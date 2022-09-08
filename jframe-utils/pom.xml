@@ -31,7 +31,7 @@
     <properties>
         <spring.core.version>5.1.2.RELEASE</spring.core.version>
         <mysql.version>5.1.45</mysql.version>
-        <postgresql.version>42.2.2</postgresql.version>
+        <postgresql.version>42.4.1</postgresql.version>
         <servlet.version>3.1.0</servlet.version>
         <slf4j.version>1.7.25</slf4j.version>
         <log4j.version>1.2.17</log4j.version>
